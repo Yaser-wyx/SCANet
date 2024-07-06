@@ -1,5 +1,6 @@
-# SCANet: Correcting LEGO Assembly Errors with Self-Correct Assembly Network (IROS24 Submission)
+# SCANet: Correcting LEGO Assembly Errors with Self-Correct Assembly Network (IROS24 Oral Presentation!!😊)
+[arXiv](https://arxiv.org/abs/2403.18195)
 
-## Coming soon!
+## Coming Soon!
 
-**_Will release after accept._**
+**Due to my ongoing work on a new project aimed for submission to ICRA25 and limited personal bandwidth, the release of the SCANet dataset and code may be slightly delayed. However, I'll do my best to make them available as soon as possible. (Estimated release dates: Dataset by July 31, and Code and weights by August 31.)**
