@@ -1,0 +1,126 @@
+suffix: "SCANet"
+model: {
+  pretrain: "./weights/pretrain.pth",
+  hidden_dim: &h_dim 256,
+  position_norm: true,
+  num_component_queries: 5,
+  backbone: {
+    name: 'TwinNet',
+    freeze: true,
+    opts: {
+      hourglass_opts: {
+        img_size: 512,
+        occ_out_channels: 8,
+        occ_fmap_size: 256,
+        num_stacks: 2,
+      }
+    }
+  },
+  neck: {
+    name: 'ClassicNeck',
+    opts: {
+      in_channel: 512,
+      out_channel: *h_dim,
+      stride: 2,
+      block_stack: 2
+    }
+  },
+  component_encoder: {
+    name: 'VoxelEncoderV5',
+    opts: {
+      num_features: *h_dim,
+      freeze_mepnet_encoder: true
+    }
+  },
+  transformer: {
+    opts: {
+      d_model: *h_dim,
+      nhead: 8,
+      num_encoder_layers: 6,
+      num_decoder_layers: 6,
+      dim_feedforward: 2048,
+      dropout: 0.1,
+      activation: 'relu',
+      normalize_before: false,
+      return_intermediate_dec: true,
+    }
+
+  },
+  heads: [
+      {
+      name: 'RHead', # rotation & translation head
+      model_type: RHead,
+      opts: {
+        input_dim: *h_dim,
+        hidden_dim: 128,
+        out_dim: 5,
+        num_layers: 3,
+        use_all: true
+      },
+    },
+    {
+        name: 'CHead', # rotation & translation head
+        model_type: CHead,
+        opts: {
+          input_dim: *h_dim,
+          hidden_dim: *h_dim,
+          out_dim: 4,
+          num_layers: 2,
+          use_all: true
+        },
+    },
+    {
+      name: 'TransHead', # rotation & translation head
+      model_type: TransHeadV3,
+      opts: {
+        input_dim: *h_dim,
+        hidden_dim: *h_dim,
+        out_dim: 130,
+        ratio: 1,
+        use_all: true
+      },
+    },
+  ],
+  loss: {
+    name: 'LossMix',
+    opts: {
+      
+      loss_list: [
+        {
+          loss_type: CLoss,
+          opts: { 
+            weight: 0.5
+            }
+        },
+         {
+          loss_type: RLoss,
+          opts: {
+          }
+        },
+        {
+          loss_type: TransLossV5,
+          opts: {
+          }
+        },
+      ]
+    }
+  }
+}
+
+train: {
+  epoch_nums: 100,
+  batch_size: 8,
+  accumulate_grad_batches: 4,
+  num_works: 4,
+  out_dir: "./out/checkpoints",
+  lr: 1e-4,
+  backbone_lr: 1e-4,
+  weight_decay: 1e-4,
+  start_save: 20,
+  every_n: 5
+}
+test: {
+  batch_size: 3,
+  num_works: 0,
+  out_dir: "./test_out",
+}

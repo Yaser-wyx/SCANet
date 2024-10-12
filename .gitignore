@@ -1,0 +1,9 @@
+/weights/pretrain.pth
+/logs/
+/out/
+/checkpoints/
+/results/
+/.idea/*
+*.pth
+*.zip
+
