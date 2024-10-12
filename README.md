@@ -17,6 +17,6 @@
 
 
 # TODO:
--[ ] 完善注释
--[ ] 添加环境配置
--[ ] 添加training and testing 使用方法
+- [ ] 完善注释
+- [ ] 添加环境配置
+- [ ] 添加training and testing 使用方法
