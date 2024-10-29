@@ -24,6 +24,7 @@ You can download the dataset from [[Dataset BaiduNetDisk](https://pan.baidu.com/
 
 
 # Environment
+## Setting 1 (Recommended)
 To set up the environment, follow these steps:
 0. Install Conda.
 1. Download the compressed package: [SCANet Environment](https://drive.google.com/file/d/1XQptIuDqBNVSZcVshG1X_ZzR2rHArmoN/view?usp=drive_link).
@@ -39,7 +40,11 @@ tar -xzf SCANet_env.tar.gz -C /home/username/.conda/env/SCANet_env # replace use
 ```shell
 conda activate SCANet_env
 ```
-
+## Setting2
+To install the required packages, use the following command:
+```shell
+pip install -r requirements.txt
+```
 
 # Training
 Download the pre-trained model (DETR + Hourglass) from: [[Pre-trained Model](https://drive.google.com/file/d/1HMPtxH1gLG4ON8t7RIyTpLAb-SpwqSkm/view?usp=sharing)].
