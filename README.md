@@ -1,4 +1,4 @@
-# SCANet: Correcting LEGO Assembly Errors with Self-Correct Assembly Network (IROS24 Oral Presentation, Best Application Paper Final List!!😊)
+# SCANet: Correcting LEGO Assembly Errors with Self-Correct Assembly Network (IROS24 Oral Presentation, Best Application Paper Finalist!!😊)
 
 
 This is the official implement repository for the SCANet: Correcting LEGO Assembly Errors with Self-Correct Assembly Network (IROS 2024).
