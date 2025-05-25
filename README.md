@@ -3,7 +3,7 @@
 
 This is the official implement repository for the SCANet: Correcting LEGO Assembly Errors with Self-Correct Assembly Network (IROS 2024).
 
-[[Project Website](https://scanet-iros2024.github.io/)]
+[[Project Website](https://scanet-iros.github.io/)]
 
 [[Paper](https://arxiv.org/abs/2403.18195)]
 
